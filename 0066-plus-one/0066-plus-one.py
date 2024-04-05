@@ -1,0 +1,22 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        if digits[len(digits)-1]!=9:
+            digits[len(digits)-1]+=1
+            return digits
+        else:
+            for i in range(len(digits)):
+                if digits[len(digits)-1-i]==9:
+                    if len(digits)==1:
+                        digits[0]=1
+                        digits.append(0)
+                        return digits
+                    digits[len(digits)-1-i]=0
+                    if digits[0]==0:
+                        digits.insert(0,1)
+                        return digits
+                    else:
+                        if digits[len(digits)-2-i]!=9:
+                            digits[len(digits)-2-i]+=1
+                            return digits
+
+
