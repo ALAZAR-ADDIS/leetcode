@@ -3,10 +3,11 @@ class Solution:
         index=0
         while index<len(nums):
             correct=nums[index]
-            if correct==index or  correct>=len(nums):
-                index+=1
+            if correct<len(nums) and nums[correct]!=nums[index]   :
+                 nums[correct],nums[index]=nums[index],nums[correct]
             else:
-                nums[correct],nums[index]=nums[index],nums[correct]
+                index+=1
+               
         count=0
         while count<len(nums):
             if nums[count]!=count:
