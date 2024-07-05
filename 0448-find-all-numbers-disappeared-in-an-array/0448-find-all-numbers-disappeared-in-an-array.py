@@ -3,7 +3,7 @@ class Solution:
         index=0
         while(index<len(nums)):
             correct=nums[index]-1
-            if index==correct or nums[index]==nums[correct]:
+            if  nums[index]==nums[correct]:
                 index+=1
             else:
                 nums[correct],nums[index]=nums[index],nums[correct]
