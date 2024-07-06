@@ -6,7 +6,7 @@ class Solution:
             if nums[index]!=nums[correct]:
                 nums[index],nums[correct]=nums[correct],nums[index]
             else:
-                if index!=correct and nums[index]==nums[correct]:
+                if index!=correct :
                     return nums[correct]
                 index+=1
        
