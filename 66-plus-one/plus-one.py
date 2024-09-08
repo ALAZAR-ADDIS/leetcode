@@ -22,8 +22,7 @@ class Solution:
         carry=1
         r=len(digits)-1
         while r>-1 and carry:
-            carry=0
-            total=digits[r]+1+carry
+            total=digits[r]+carry
             carry=total//10
             rem=total%10
             digits[r]=rem
