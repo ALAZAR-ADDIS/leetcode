@@ -13,14 +13,15 @@ class Solution:
         
         prev=None
         curr=l.next
-        mid=l.next
+        
 
         for i in range(right-left+1):
             temp=curr.next
             curr.next=prev
             prev=curr
             curr=temp
+        
+        l.next.next=curr
         l.next=prev
-        mid.next=curr
         return dummy.next
         
