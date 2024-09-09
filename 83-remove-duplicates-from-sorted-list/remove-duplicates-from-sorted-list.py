@@ -17,11 +17,19 @@ class Solution:
         #         r=r.next
         #         l=l.next
         # return head
-
+       
+        #approch 2
+        # curr=head
+        # while curr and curr.next:
+        #     if  curr.val == curr.next.val:
+        #         curr.next=curr.next.next
+        #     else:
+        #         curr=curr.next
+        # return head
+          #approch 3
         curr=head
-        while curr and curr.next:
-            if  curr.val == curr.next.val:
+        while curr:
+            while curr.next and curr.val==curr.next.val:
                 curr.next=curr.next.next
-            else:
-                curr=curr.next
+            curr=curr.next
         return head
