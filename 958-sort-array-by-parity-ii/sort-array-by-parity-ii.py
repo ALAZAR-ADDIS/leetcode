@@ -9,6 +9,6 @@ class Solution:
                 even+=2
             while odd<len(nums) and nums[odd]%2==1:
                 odd+=2
-            if even<len(nums) and odd <len(nums) and nums[even]%2==1  and nums[odd]%2==0:
+            if even<len(nums) and odd <len(nums):
                 nums[even],nums[odd]=nums[odd],nums[even]
         return nums
