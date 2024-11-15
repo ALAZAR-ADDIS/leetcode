@@ -15,14 +15,33 @@ class Solution:
 
         # selection sort
 
-        for i in range(len(heights)):
-            maxIndex=i
-            for j in range(i+1,len(heights)):
-                if heights[maxIndex]<heights[j]:
-                    maxIndex=j
-            heights[maxIndex],heights[i]=heights[i],heights[maxIndex]
-            names[maxIndex],names[i]=names[i],names[maxIndex]
+        # for i in range(len(heights)):
+        #     maxIndex=i
+        #     for j in range(i+1,len(heights)):
+        #         if heights[maxIndex]<heights[j]:
+        #             maxIndex=j
+        #     heights[maxIndex],heights[i]=heights[i],heights[maxIndex]
+        #     names[maxIndex],names[i]=names[i],names[maxIndex]
+        # return names
+
+        #inseertion sort
+        
+        for i  in range(1,len(heights)):
+            j=i-1
+            maxNum=heights[i]
+            maxName=names[i]
+            while j>=0 and heights[j]<maxNum:
+                heights[j+1],heights[j]=heights[j],heights[j+1]
+                names[j+1],names[j]=names[j],names[j+1]
+                j-=1
+            heights[j+1]=maxNum
+            names[j+1]=maxName
+        print(heights)
         return names
+                
+
+
+
                     
 
 
