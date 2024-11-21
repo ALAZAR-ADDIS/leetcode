@@ -10,7 +10,3 @@ class Solution:
                 r-=1
             else:
                 l+=1
-        
-        
-
-        
