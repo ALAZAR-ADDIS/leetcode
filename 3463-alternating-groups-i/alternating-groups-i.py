@@ -15,16 +15,13 @@ class Solution:
         l=0
         r=2
         while l<len(colors)-1:
-            if colors[l%len(colors)]!=colors[(l+1)%len(colors)]:
+            if colors[l]!=colors[l+1]:
                 aul-=1
-                print("Changed1")
+                
             if colors[r%len(colors)]!=colors[(r+1)%len(colors)]:
                 aul+=1
-                print("Changed2")
             ans+=1 if aul==2 else 0
-            print(0)
-            print(ans,aul)
-            
+               
             
 
 
