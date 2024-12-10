@@ -5,22 +5,22 @@ class Solution:
         #inorder to move to the back of the list again use the modulus opertion
         # for every left move if the consucetive values of  the list are  alternating decrease the value of the a
         
-        aul=0
-        for i in range(2):
-            if colors[i]!=colors[i+1]:
-                aul+=1
+        alt=0
+        for r in range(2):
+            if colors[r]!=colors[r+1]:
+                alt+=1
         
-        ans= 1 if aul==2 else 0
+        ans= 1 if alt==2 else 0
         
         l=0
         r=2
         while l<len(colors)-1:
             if colors[l]!=colors[l+1]:
-                aul-=1
+                alt-=1
                 
             if colors[r%len(colors)]!=colors[(r+1)%len(colors)]:
-                aul+=1
-            ans+=1 if aul==2 else 0
+                alt+=1
+            ans+=1 if alt==2 else 0
                
             
 
