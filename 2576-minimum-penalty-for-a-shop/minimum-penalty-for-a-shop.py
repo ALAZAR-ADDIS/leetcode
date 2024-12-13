@@ -35,7 +35,7 @@ class Solution:
                 Yes-=1
             if customers[i]=="N":
                 No+=1
-            print(i,Yes,No)
+        
             if Min>Yes+No:
                 Min=Yes+No
                 ans=i+1
