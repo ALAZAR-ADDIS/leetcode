@@ -8,8 +8,8 @@ class Solution:
         Dict={"}":"{","]":"[",")":"("}
 
         for i in range(len(s)):
-            if stack and  s[i] in closingBrackets:
-                if   stack[-1]==Dict[s[i]]:
+            if    s[i] in closingBrackets:
+                if stack and  stack[-1]==Dict[s[i]]:
                     stack.pop()
                     continue
                 else:
