@@ -1,25 +1,25 @@
 class Solution:
     def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
-        col=len(img[0])
-        row=len(img)
-        k=0
-        newMatr=[[0]*col for _ in range(row)]
-        length=col*row
-        while k<length:
-            col_n=k%col
-            row_n=k//col
-            total,count=0,0
-            for i in range(row_n-1,row_n+2):
-                for j in range(col_n-1,col_n+2):
-                    if i<0 or j<0 or j>=col or i>=row:
-                        continue
-                    total+=img[i][j]
-                    count+=1
-            
-            newMatr[row_n][col_n]=total//count
-            k+=1
-        return newMatr
-    
+        ans=[]
 
+        for i in range(len(img)):
+            curr_list = []
+            for j in range(len(img[0])):
+
+                total=0
+                count=0
+
+                for row in range(i-1,i+2):
+                    for col in range(j-1, j+2):
+
+                        if 0 <= row < len(img) and 0<= col <len(img[0]):
+                            total +=  img[row][col]
+                            count += 1
+
+                curr_list.append(total//count)
+            ans.append(curr_list)
+        return ans
+            
+                    
 
         
