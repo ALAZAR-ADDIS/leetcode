@@ -1,33 +1,40 @@
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        col=len(mat[0])
-        row=len(mat)
-        ans=[]
-        Up=True
-        cur_col=cur_row=0
-        while len(ans)<col*row:
-            if Up:
-                while cur_row>=0 and cur_col<col :
-                    ans.append(mat[cur_row][cur_col])
-                    cur_row-=1
-                    cur_col+=1
-                if cur_col==col:
-                   cur_row+=2
-                   cur_col-=1
+
+        is_up = True
+        ans = []
+        i = 0
+        j = 0
+
+        while i < len(mat) and j <len(mat[0]):
+
+            if is_up:
+                while i >= 0 and j < len(mat[0]):
+                    ans.append(mat[i][j])
+                    i -= 1
+                    j += 1
+                
+                if j >= len(mat[0]):
+                    i += 2
+                    j -= 1
                 else:
-                    cur_row+=1
-                Up=False
+                    i += 1
+                is_up = False
                 
             else:
-                while cur_col>=0 and cur_row<row :
-                    ans.append(mat[cur_row][cur_col])
-                    cur_col-=1
-                    cur_row+=1
-                if cur_row==row:
-                   cur_col+=2
-                   cur_row-=1
+
+                while j >= 0 and i< len(mat):
+                    ans.append(mat[i][j])
+                    j -= 1
+                    i += 1
+                
+                if i >= len(mat):
+                    i -= 1
+                    j += 2
                 else:
-                    cur_col+=1
-                Up=True
-            
-        return ans 
+                    j += 1        
+
+                is_up = True
+                
+
+        return ans
