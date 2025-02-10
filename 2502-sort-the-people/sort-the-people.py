@@ -27,8 +27,8 @@ class Solution:
 
             while j>=0 and heights[j] < temp_h:
 
-                heights[j] , heights[j+1] = heights[j+1], heights[j]  
-                names[j] , names[j+1] = names[j+1], names[j]
+                heights[j+1] = heights[j]  
+                names[j+1] = names[j]
                 j-=1
             names[j+1] = temp_n
             heights[j+1] = temp_h
