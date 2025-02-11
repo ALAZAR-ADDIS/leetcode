@@ -1,41 +1,38 @@
 class Solution:
     def pancakeSort(self, arr: List[int]) -> List[int]:
-        #first find the max in the given range
-        #second find reverce the element until that index
-        #append the index+1
-        #And swintch the element with the last  pointer
+        """
+        fist find the index of  the  max num withe the sliced range of the array
+        the reverce it throuh the index of the larger element 
+        largest index   + 1 
+        and again reverce the hole till the limited index
+        limit index  +1 
 
-        def find_max(end):
-            
-            i=0
-            for j in range(end+1):
-                if arr[i]<arr[j]:
-                    i=j
-            return i
-        def rev_arr(end):
-            l=0
-            r=end
-            while l<r:
-                arr[l],arr[r]=arr[r],arr[l]
-                l+=1
-                r-=1
+
         
-        ans=[]
-       
-        for i in range(len(arr)-1,0,-1):
-            maxInd=find_max(i)
-            rev_arr(maxInd)
-            rev_arr(i)
-            ans.append(maxInd+1)
-            ans.append(i+1)
+        """
+        ans = []
+
+        for i  in range(len(arr)):
+            max_index = 0
+            for j in range(len(arr)-i):
+                if arr[max_index]< arr[j]:                   
+                    max_index = j
+           
             
-
-
-
+            self.swap(arr,max_index)
+            self.swap(arr,len(arr)-i-1)
+            ans.append(max_index + 1)
+            ans.append(len(arr)- i)
+    
+      
         return ans
         
+    def swap(self, arr, end):
         
-
+        l = 0
+        r = end
+        while l < r:
+            arr[l], arr[r] = arr[r] , arr[l]            
+            l += 1
+            r -=1
         
- 
-            
