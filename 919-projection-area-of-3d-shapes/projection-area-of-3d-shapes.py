@@ -26,7 +26,7 @@ class Solution:
         yz = 0
 
         for i in range(len(grid)):
-            xz += max(grid[i])
+                xz += max(grid[i])
        
         
         for j in range(len(grid[0])):
