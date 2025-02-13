@@ -10,7 +10,7 @@ class Solution:
         for r in range(len(s)):
             count_s[s[r]] += 1
 
-            while (r - l + 1) > len(p):
+            if (r - l + 1) > len(p):
                 count_s[s[l]]-=1
                 if  count_s[s[l]] == 0:
                     count_s.pop(s[l])
