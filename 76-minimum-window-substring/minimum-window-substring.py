@@ -6,14 +6,15 @@ class Solution:
                     return False
             return True
 
+
         count_s= defaultdict(int)
         count_t = defaultdict(int)
+        
         ans =[0,0]
         l =0
         min_size = float("inf")
 
-        freq_s = 0
-        freq_t =len(t)
+       
 
         for char in t:
             count_t[char] += 1
@@ -23,13 +24,12 @@ class Solution:
 
             if s[r] in count_t:                
                 count_s[s[r]] += 1
-                freq_s += 1
+                
            
-            while len(count_s)== len(count_t) and check(count_s,count_t) :             
+            while l <= r and len(count_s)== len(count_t) and check(count_s,count_t) :             
 
                 if s[l] in count_t:
                     count_s[s[l]] -= 1 
-                    freq_s -= 1
 
                     if count_s[s[l]] == 0:
                         count_s.pop(s[l])
