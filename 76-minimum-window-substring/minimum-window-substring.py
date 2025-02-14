@@ -1,7 +1,7 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         def check(s , t):
-            for char in s :
+            for char in t :
                 if s[char] < t[char]:
                     return False
             return True
@@ -26,7 +26,7 @@ class Solution:
                 count_s[s[r]] += 1
                 
            
-            while l <= r and len(count_s)== len(count_t) and check(count_s,count_t) :             
+            while check(count_s,count_t) :             
 
                 if s[l] in count_t:
                     count_s[s[l]] -= 1 
