@@ -26,7 +26,7 @@ class Solution:
                 count_s[s[r]] += 1
                 
            
-            while check(count_s,count_t) :             
+            while  len(count_s)== len(count_t) and  check(count_s,count_t) :             
 
                 if s[l] in count_t:
                     count_s[s[l]] -= 1 
