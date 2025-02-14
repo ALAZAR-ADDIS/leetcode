@@ -8,7 +8,6 @@ class Solution:
 
         count_s= defaultdict(int)
         count_t = defaultdict(int)
-
         ans =[0,0]
         l =0
         min_size = float("inf")
