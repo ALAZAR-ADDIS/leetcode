@@ -19,8 +19,7 @@ class Solution:
                         ans.append([val,nums[l],nums[r]])
                         l+= 1
                         r -= 1
-                        while r > l and nums[r] == nums[r  + 1]:
-                            r -= 1
+                        
                         while r > l and nums[l] == nums[ l - 1]:
                             l += 1
                     elif summ > 0:
