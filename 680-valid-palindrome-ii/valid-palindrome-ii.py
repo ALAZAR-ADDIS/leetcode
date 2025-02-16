@@ -1,12 +1,34 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        l,r=0,len(s)-1
-        while r>l:
-            if s[r]!=s[l]:
-                skipl,skipr=s[l+1:r+1],s[l:r]
-                return (skipl==skipl[::-1] or skipr==skipr[::-1])
-            l+=1
-            r-=1
-        return True
+        l_dif=0
+        r_dif = 0
+        l = 0
+        r = len(s) - 1
+
+        while l<r:
+            if s[l] == s[r]:
+                l+=1
+                r -= 1
+            else:
+                l += 1
+                l_dif +=1
+
+        if l_dif <= 1:       
+            return True
+
+        l = 0
+        r = len(s) - 1
+
+        while l<r:
+            if s[l] == s[r]:
+                l+=1
+                r -= 1
+            else:
+                r -= 1
+                r_dif +=1
+        if r_dif <= 1:       
+            return True
+        return False
+        
         
         
