@@ -5,41 +5,27 @@
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        # l,r=list1,list2
-        # newNode=ListNode(0)
-        # current=newNode
-        # while  l or r:
+        l = list1
+        r = list2
+        dummy = ListNode(0)
+        curr = dummy
 
-        #     if (r and l and l.val<=r.val) or (r is None):
-        #         current.next=l
-        #         current=l
-        #         l=l.next
-        #     else:
-        #         current.next=r
-        #         current=r
-        #         r= r.next
+        while l and r:
 
-        # return newNode.next
-
-        new=ListNode(0)
-        p=new
-        r,l=list1,list2
-        
-        while r and l:
-            if l.val<=r.val:
-                p.next=l
-                l=l.next
+            if not r or  (l and l.val <= r.val):
+                curr.next = l
+                l = l.next
             else:
-                p.next=r
-                r=r.next
-            p=p.next
-        if r:
-            p.next=r
+                curr.next = r
+                r = r.next
+
+            curr = curr.next
+        
         if l:
-            p.next=l
-        return new.next
-            
-
-
+            curr.next = l
+        else:
+            curr.next = r
+        return dummy.next
+                
 
         
