@@ -25,7 +25,7 @@ class ProductOfNumbers:
         else:
             
             if self.nums[-(k + 1)]:
-                return int(self.nums[-1]/self.nums[- (k + 1)])
+                return self.nums[-1]//self.nums[- (k + 1)]
             else:
                 return self.nums[-1]
         
