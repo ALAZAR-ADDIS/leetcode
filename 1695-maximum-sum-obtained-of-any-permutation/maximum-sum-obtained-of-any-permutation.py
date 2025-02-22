@@ -1,6 +1,6 @@
 class Solution:
     def maxSumRangeQuery(self, nums: List[int], requests: List[List[int]]) -> int:
-        summ = [0] * 100002
+        summ = [0] * (len(nums) + 2)
         for start,end in requests:
             summ[start] += 1
             summ[end + 1] += -1
@@ -10,8 +10,8 @@ class Solution:
         for i in range(1,len(summ)):
             summ[i] += summ[i  - 1]
         
-        nums.sort(reverse = True)
-        summ.sort(reverse = True)
+        nums.sort( key = lambda x : - x)
+        summ.sort(key = lambda x : - x)
         
         
 
