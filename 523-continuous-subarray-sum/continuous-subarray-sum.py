@@ -8,11 +8,14 @@ class Solution:
         for i in range(len(nums)):
             summ += nums[i]
 
-            if  (summ % k in dict_count) and (i - dict_count[summ % k] ) >=2:
-                return True
-                
+
             if summ % k not in dict_count:
                 dict_count[summ % k ] = i
+
+            elif  (i - dict_count[summ % k] ) >=2:
+                return True
+                
+            
         return False
 
         
