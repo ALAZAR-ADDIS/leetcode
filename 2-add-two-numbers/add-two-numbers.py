@@ -12,7 +12,7 @@ class Solution:
         curr2 = l2
         rem = 0
 
-        while curr2 or curr1:
+        while curr2 or curr1  or rem:
                 summ = 0
                 summ += curr1.val if curr1 else 0
                 summ += curr2.val if curr2 else 0
@@ -30,9 +30,6 @@ class Solution:
                 ptr = ptr.next
         
        
-        if rem:
-            newNode = ListNode(rem)
-            ptr.next = newNode
             
         return dummy.next
 
