@@ -1,23 +1,49 @@
 class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
+    def sumSubarrayMins(self, nums: List[int]) -> int:
+
+        """
+
+        general idea is to find the  PSE NSE
+
+        """
+
+        # prev smaller
+
+        stack = []
+        PSE = [-1] * len(nums)
+
+        for i in range(len(nums)):
+            while stack and nums[stack[-1]] >= nums[i]:
+                index = stack.pop()
+
+            if stack:
+                PSE[i] = stack[-1]
+            stack.append(i)
         
-        total=0
-        stack=[]
-        for i,n in enumerate(arr):
-            while stack and n<stack[-1][1]:
-                j,val=stack.pop()
-                l=j-stack[-1][0] if stack else j+1
-                r=i-j
-                total+=(l*r*val)%(10**9+7)
-            stack.append([i,n])
-        for i in range(len(stack)):
-            j,val=stack[i]
-            r=len(arr)-j
-            l=j-stack[i-1][0] if i>0 else j+1
-            total+=(l*r*val)%(10**9+7)
+        stack = []
+        NSE = [len(nums)] * len(nums)
+
+
+        for i in range(len(nums)):
+           
+            while stack and nums[stack[-1]] >= nums[i]:
+                index = stack.pop()
+                
+                NSE[index] = i
+          
+            stack.append(i)
+    
+        ans = 0
+        print(PSE ,NSE)
+
+        for i in range(len(nums)):
+            left = i - PSE[i]
+            right = NSE[i] - i
+            ans = (ans + left*right * nums[i]) %(10**9 + 7)
+        return ans
+
+
+
+
         
-
-
-        return total%(10**9+7)
-
         
