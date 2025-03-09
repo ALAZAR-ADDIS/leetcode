@@ -1,21 +1,23 @@
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
-        g.sort()
         s.sort()
-        ans=0
-        l,r=0,0
-        while l<len(s) and r<len(g):
-            while l<len(s) and  s[l]<g[r]:
-                print(s[l],g[r])
-                l+=1
-            if l>=len(s):
-                break
-            ans+=1
+        g.sort()
 
-            r+=1
-            l+=1
-        return ans
+        l =0
+        r = 0
 
+        ans = 0
+        
 
+        while  l < len(g) and r < len(s):
+
+            while r < len(s) and g[l] > s[r]:
+                r += 1
+
+            if r < len(s) and g[l] <= s[r]:
+                ans += 1
             
+            l += 1
+            r += 1 
+        return ans
         
