@@ -5,21 +5,16 @@ class Solution:
 
         if totalC >totalG:
             return -1
-        t = 0
-        c = 0
-        started = False
-        index = -1
-        for i in  range(len(gas)):
             
-
+        t = 0
+        index = 0
+        for i in  range(len(gas)):
             if t + gas[i] >= cost[i] :
-                if not started:
-                    started = True
-                    index = i
                 t += gas[i] - cost[i]
             else:
                 t = 0
-                index = -1
-                started = False
+                index = i+1
+        if index>=len(gas):
+            return -1
         return index
-        
+    
