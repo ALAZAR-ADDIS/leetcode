@@ -3,9 +3,8 @@ class Solution:
         if n >= 0:
             return self.solve(x,n)
         else:
-            print(abs(1 / self.solve(x,abs(n))))
-            print(-1.0 if n % 2 and x < 0 else 1.0)
-            return  (abs(1 / self.solve(x,abs(n)))) * (-1.0 if n % 2 and x < 0 else 1.0)
+            
+            return  abs(1 / self.solve(x,abs(n))) * (-1.0 if n % 2 and x < 0 else 1.0)
     
 
     def solve(self, x , n ):
