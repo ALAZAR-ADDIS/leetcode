@@ -2,13 +2,14 @@ class Solution:
     def findKthBit(self, n: int, k: int) -> str:
         return self.solve(n)[k-1]
 
-    def solve(self, n ,prev = "0"):
-        if  n - 1 == 0:
-            return prev
+    def solve(self, n):
+        if  n == 1:
+            return "0"
 
         else:
-            prev = prev + "1"  + self.operate(prev)
-            return self.solve(n-1 , prev)
+            prev = self.solve(n-1)
+            
+            return prev + "1" + self.operate(prev)
 
     def operate(self,n):
         ans =[]
