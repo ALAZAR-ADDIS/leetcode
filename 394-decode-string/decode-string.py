@@ -8,33 +8,23 @@ class Solution:
             if s[i] == "]":
                 char = []
 
-                while stack and stack[-1].isalpha():
+                while stack and stack[-1] != "[":
                     char.append(stack.pop())
 
-                if stack[-1] == "[":
-                    stack.pop()
+                stack.pop()
 
                 char = "".join(char[::-1])
                 num = []
 
-                while stack and not(stack[-1].isalpha()):
-                    if stack[-1] != '[':
+                while stack and stack[-1].isdigit():
                         num.append(stack.pop())
-                    else:
-                        stack.pop()
-                        break
                 num = int("".join(num[::-1])) if num else 1
 
                 stack.append( num * char)
-                continue
-            stack.append(s[i])
+            else:
+                stack.append(s[i])
+                          
             
-                
-            
-
-
-        
-
         return "".join(stack)
                 
             
