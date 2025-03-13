@@ -12,18 +12,16 @@ class Solution:
                     char.append(stack.pop())
                
 
-                if stack[-1] == "[":
-                    stack.pop()
+                
+                stack.pop()
 
                 char = "".join(char[::-1])
                 num = []
 
-                while stack and not(stack[-1].isalpha()):
+                while stack and stack[-1].isdigit():
                     if stack[-1] != '[':
                         num.append(stack.pop())
-                    else:
-                        stack.pop()
-                        break
+                    
                 num = int("".join(num[::-1])) 
 
                 stack.append( num * char)
