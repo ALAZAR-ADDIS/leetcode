@@ -10,33 +10,56 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+    
 
-        def helper(qu):
-            if not qu:
+        def helper(root):
+
+            if not root:
                 return
-            
-            leng = len(qu)
-            prev = None
-            
-            while leng > 0:
-                poped = qu.pop()
-                poped.next = prev
-                prev = poped
 
-                if poped.right:
-                    qu.appendleft(poped.right)
-                if poped.left:
-                    qu.appendleft(poped.left)
-                leng -= 1
-            helper(qu)
-        if not root:
-            return 
-        
-        q = deque()
-        q.append(root)
-        helper(q)
+            if root.left and root.right:
+                root.left.next= root.right
+
+            if root.next and root.right:
+                root.right.next = root.next.left
+
+            helper(root.left)
+            helper(root.right)
+            
+        helper(root)
 
         return root
+        
+        
+        
+        
+
+        # def helper(qu):
+        #     if not qu:
+        #         return
+            
+        #     leng = len(qu)
+        #     prev = None
+            
+        #     while leng > 0:
+        #         poped = qu.pop()
+        #         poped.next = prev
+        #         prev = poped
+
+        #         if poped.right:
+        #             qu.appendleft(poped.right)
+        #         if poped.left:
+        #             qu.appendleft(poped.left)
+        #         leng -= 1
+        #     helper(qu)
+        # if not root:
+        #     return 
+        
+        # q = deque()
+        # q.append(root)
+        # helper(q)
+
+        # return root
 
 
         
