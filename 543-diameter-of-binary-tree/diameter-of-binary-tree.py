@@ -12,12 +12,12 @@ class Solution:
             if not root:
                 return -1
             
-            left =  solve(root.left)
-            right =  solve(root.right)
+            left =   1 + solve(root.left)
+            right =  1 + solve(root.right)
 
-            maxx[0] = max(left + right + 2,maxx[0])
+            maxx[0] = max(left + right,maxx[0])
 
-            return max(left,right) + 1
+            return max(left,right)
         # print(solve(root.left))
         # print(solve(root.right))
         # return  solve(root.left) + solve(root.right)
