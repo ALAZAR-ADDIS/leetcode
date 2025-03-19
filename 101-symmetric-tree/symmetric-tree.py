@@ -33,11 +33,12 @@ class Solution:
                 return True
 
             leng = len(qu)
-            print(leng,"This is the leng")
+            
             while  leng > 0:
                 
                 left = qu.popleft() 
                 right = qu.popleft()
+
                 
                 
 
@@ -46,18 +47,18 @@ class Solution:
 
                 if left and right and left.val != right.val:
                     return False
-
-                if left:
-                    qu.append(left.left)
-                if right:
-                    qu.append(right.right)
-                
-                if left:
-                    qu.append(left.right)
-                if right:
-                    qu.append(right.left) 
-                
                 leng -= 2
+                
+                if not left and not right:
+                    continue
+
+                
+                qu.append(left.left)
+                qu.append(right.right)
+                qu.append(left.right)
+                qu.append(right.left) 
+                
+                
         
             return solve(qu)
         q = deque()
