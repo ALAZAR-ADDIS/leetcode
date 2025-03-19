@@ -8,11 +8,11 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
 
-        def helper(qu,nextsize):
+        def helper(qu):
             if not qu:
                 return 
 
-            i = nextsize
+            i = len(qu)
             temp = []
             nextsize = 0
        
@@ -33,7 +33,7 @@ class Solution:
                 i -= 1
 
             ans.append(temp)
-            helper(qu,nextsize)
+            helper(qu)
 
         if not root:
             return []
@@ -41,7 +41,7 @@ class Solution:
         ans =[]
         q = deque()
         q.append(root)
-        helper(q,1)
+        helper(q)
 
         return ans
         
