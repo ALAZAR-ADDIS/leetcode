@@ -13,22 +13,27 @@ class Solution:
         def solve(root,minn,maxx):
             if not root:
                 return None
-            
-            if minn.val <= root.val <= maxx.val:
-                if root.left and (minn.val < maxx.val < root.left.val ):
-                    return solve(root.left,minn,maxx)
-                elif root.right and (root.right.val< minn.val < maxx.val ):
-                    return solve(root.right,minn,maxx)
-                else:
-                    return root
+            if root.val > minn.val and root.val >maxx.val:
+                return solve(root.left, minn , maxx)
+            elif  root.val < minn.val and root.val < maxx.val:
+                return solve(root.right, minn , maxx)
             else:
+                return root
+            
+            # if minn.val <= root.val <= maxx.val:
+            #     if root.left and (minn.val < maxx.val < root.left.val ):
+            #         return solve(root.left,minn,maxx)
+            #     elif root.right and (root.right.val< minn.val < maxx.val ):
+            #         return solve(root.right,minn,maxx)
+            #     else:
+            #         return root
+            # else:
 
-                if root.val > maxx.val:
-                    return solve(root.left,minn,maxx)
-                else:
-                    return solve(root.right,minn,maxx)
-        if p.val > q.val:
-            return solve(root,q,p)
+            #     if root.val > maxx.val:
+            #         return solve(root.left,minn,maxx)
+            #     else:
+            #         return solve(root.right,minn,maxx)
+        
         return solve(root,p,q)
                 
                     
