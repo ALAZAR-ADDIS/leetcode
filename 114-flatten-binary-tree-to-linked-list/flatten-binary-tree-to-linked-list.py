@@ -9,22 +9,38 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        # def solve(root):
+        #     if not root:
+        #         return None
+        #     qu.append(root)
+            
+        #     solve(root.left)
+        #     solve(root.right)
+
+        # qu = deque()
+       
+        # prev = None
+        # dummy = TreeNode(0)
+        # curr = dummy
+        # solve(root)
+        # while qu:
+        #     curr.right = qu.popleft()
+        #     curr = curr.right
+        #     curr.left = None
+        # return dummy.right
+
         def solve(root):
             if not root:
-                return None
-            qu.append(root)
-            
-            solve(root.left)
-            solve(root.right)
+                return 
+            temp= root.right
+            ptr[0].right = root
+            ptr[0] = ptr[0].right
 
-        qu = deque()
-       
-        prev = None
+            solve(root.left)
+            solve(temp)
+            root.left = None
         dummy = TreeNode(0)
-        curr = dummy
+        ptr= [dummy,]
+
         solve(root)
-        while qu:
-            curr.right = qu.popleft()
-            curr = curr.right
-            curr.left = None
         return dummy.right
