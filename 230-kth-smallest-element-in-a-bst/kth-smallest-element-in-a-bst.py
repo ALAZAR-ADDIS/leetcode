@@ -7,16 +7,35 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
 
-
         def solve(root):
             if not root:
-                return 
+                return None
             
-            solve(root.left)
-            ans.append(root.val)
-            solve(root.right)
-        ans = []
-        solve(root)
-        return ans[k-1]
+            
+            left = solve(root.left)
+
+            count[0] += 1
+            if count[0] == k -1:
+                return root
+
+            right =  solve(root.right)
+
+            return left if left else right
+        count = [-1,]
+        return solve(root).val
+
+
+        # def solve(root):
+        #     if not root:
+        #         return 
+            
+        #     solve(root.left)
+        #     ans.append(root.val)
+        #     solve(root.right)
+
+
+        # ans = []
+        # solve(root)
+        # return ans[k-1]
 
         
