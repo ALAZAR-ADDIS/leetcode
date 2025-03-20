@@ -13,8 +13,13 @@ class Solution:
         def helper(root,start,end):
             if not root:
                 return True
+            if not(start < root.val < end):
+                return False
             
-            return start < root.val < end and helper(root.left,start,root.val) and helper(root.right,root.val,end)
+            left = helper(root.left,start,root.val)
+            right = helper(root.right,root.val,end)
+            
+            return  left and right
         return helper(root,-float("inf"),float("inf"))
 
         # def solve(root):
