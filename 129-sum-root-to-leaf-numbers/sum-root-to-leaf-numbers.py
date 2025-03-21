@@ -16,13 +16,16 @@ class Solution:
                 return 0
             val = 10 * val +  int(root.val)
             if not root.right and not root.left:
-                ans += val
-            solve(root.left,val)
-            solve(root.right,val)
+                # ans += val
+                return val
+            left = solve(root.left,val)
+            right = solve(root.right,val)
+
+            return left + right
 
         ans = 0 
-        solve(root,0)        
-        return ans
+        return solve(root,0)        
+        # return ans
 
              
 
