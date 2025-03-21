@@ -16,19 +16,26 @@ class Solution:
             left = solve(root.left)
             right = solve(root.right)
 
+            left = max(0,left)
+            right = max(0,right)
 
-            if left< 0 and right < 0:
-                maxx = max(root.val,maxx)
-                return root.val
-            elif left < 0:
-                maxx = max(root.val + right,maxx)
-                return root.val + right
-            elif right < 0:
-                maxx = max(root.val + left,maxx)
-                return root.val + left
-            else:
-                 maxx = max(root.val + left + right,maxx)
-                 return root.val + max(left,right)
+            maxx = max(maxx,left + right + root.val)
+
+            return root.val + max(left,right)
+
+
+            # if left< 0 and right < 0:
+            #     maxx = max(root.val,maxx)
+            #     return root.val
+            # elif left < 0:
+            #     maxx = max(root.val + right,maxx)
+            #     return root.val + right
+            # elif right < 0:
+            #     maxx = max(root.val + left,maxx)
+            #     return root.val + left
+            # else:
+            #      maxx = max(root.val + left + right,maxx)
+            #      return root.val + max(left,right)
 
 
           
