@@ -13,9 +13,9 @@ class Solution:
 
                 r = mid -1
             else:
-                print(mid)
-                ans = mid
+                # print(mid)
+                # ans = mid
                 l = mid +1
 
 
-        return ans
+        return r
