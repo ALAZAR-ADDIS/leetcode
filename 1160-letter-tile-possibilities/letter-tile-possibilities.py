@@ -3,8 +3,8 @@ class Solution:
 
 
         def solve():
-            if not sum(count.values()):
-                return 0
+            # if not sum(count.values()):
+            #     return 0
             ans = 0
 
             for c in count:
