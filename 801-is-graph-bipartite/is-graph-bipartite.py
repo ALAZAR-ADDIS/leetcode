@@ -5,7 +5,7 @@ class Solution:
 
             visited[node] = color
             nColor = 0 if color else  1
-            for n in graph[node]:
+            for n in grp[node]:
                 if n not in visited:
                     val = dfs(n,nColor)
                     if not val:
