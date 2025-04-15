@@ -8,41 +8,62 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
 
-        def helper(qu):
-            if not qu:
-                return 
+        # def helper(qu):
+        #     if not qu:
+        #         return 
 
-            i = len(qu)
-            temp = []
-            nextsize = 0
+        #     i = len(qu)
+        #     temp = []
+        #     nextsize = 0
        
             
-            while i > 0 :
-                poped = qu.popleft()
-                temp.append(poped.val)
+        #     while i > 0 :
+        #         poped = qu.popleft()
+        #         temp.append(poped.val)
 
-                if poped.left:
-                    qu.append(poped.left)
-                    nextsize += 1
+        #         if poped.left:
+        #             qu.append(poped.left)
+        #             nextsize += 1
 
-                if poped.right:
-                    qu.append(poped.right)
-                    nextsize += 1
+        #         if poped.right:
+        #             qu.append(poped.right)
+        #             nextsize += 1
                           
 
-                i -= 1
+        #         i -= 1
 
-            ans.append(temp)
-            helper(qu)
+        #     ans.append(temp)
+        #     helper(qu)
 
+        # if not root:
+        #     return []
+
+        # ans =[]
+        # q = deque()
+        # q.append(root)
+        # helper(q)
+
+        # return ans
         if not root:
             return []
+        
+        qu = deque([root])
+        ans = []
 
-        ans =[]
-        q = deque()
-        q.append(root)
-        helper(q)
+        while qu:
+            leng = len(qu)
+            temp = []
 
+            for _ in range(leng):
+                node = qu.popleft()
+                temp.append(node.val)
+
+                if node.left:
+                    qu.append(node.left)
+                if node.right:
+                    qu.append(node.right)
+            ans.append(temp)
         return ans
+
         
         
