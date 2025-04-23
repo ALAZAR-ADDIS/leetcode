@@ -2,7 +2,7 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
         def dfs(node):
-            if color[node]:
+            if color[node] == 1:
                 return False
             color[node] = 1
 
