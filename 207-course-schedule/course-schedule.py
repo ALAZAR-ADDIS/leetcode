@@ -6,13 +6,11 @@ class Solution:
 
             
             for n in graph[child]:
-
                 if n not in visited:
                     val   = cycleDetector(n)
                     if not val:
                         return False
-                elif visited[n] == "gray":
-                   
+                elif visited[n] == "gray":                   
                     return False
                 
             visited[child] = "black"
@@ -38,7 +36,7 @@ class Solution:
                 graph[pre].append(cor)
 
         key = list(graph.keys())
-        for g in key:
+        for g in range(numCourses):
                 if not cycleDetector(g):
                     return False
 
