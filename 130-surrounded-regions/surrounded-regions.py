@@ -5,17 +5,18 @@ class Solution:
         def dfs(row , col):
             visited.add((row,col))
             res = True
-            
-
             for x,y in dirc:
                 r = row + x
                 c = col + y
                 if inbound(r,c):
-                    if (r,c) not in visited and board[r][c] == "O":
-                        if not  dfs(r,c):
+                    if (r,c) not in visited and board[r][c] == "O":                        
+                        if not dfs(r,c):
                             res = False
                 else:
                     res = False
+            
+           
+
                         
                           
     
