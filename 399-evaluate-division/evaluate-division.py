@@ -4,10 +4,8 @@ class Solution:
         def dfs(node,need):
             visited.add(node)
 
-            for n in graph[node]:
-                
-                if n  == need:  
-                                    
+            for n   in graph[node]:                
+                if n  == need:                                     
                     return val[(node,n)]
                 else:
                     if n not in visited:
