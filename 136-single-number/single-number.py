@@ -5,5 +5,10 @@ class Solution:
         for key in vals:
             if vals[key] == 1:
                 return key
+        
+        val = 0
+        for num in nums:
+            var ^= num
+        return val
                 
         
