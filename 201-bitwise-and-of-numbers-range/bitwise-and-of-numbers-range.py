@@ -12,14 +12,23 @@ class Solution:
         #     p += 1
         # return ans
 
+        # i = 0
+        # while i < 32:
+        #     if left == right:
+        #         return left << (i)
+        #     else:
+        #         left >>= 1
+        #         right >>= 1
+        #     i += 1
+        # return 0
+
         i = 0
-        while i < 32:
-            if left == right:
-                return left << (i)
-            else:
-                left >>= 1
-                right >>= 1
+        while left != right:
+
             i += 1
-        return 0
+            left  >>= 1
+            right >>= 1
+
+        return left<<i
         
         
