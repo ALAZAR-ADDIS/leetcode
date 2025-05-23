@@ -22,16 +22,20 @@ class Solution:
 
        
         # return ans
+        ans = []
+        
+        for i  in range((1<<len(nums))):
+            temp = []
+            print(i)
 
-        n = len(nums)
-        result = []
-        for i in range(1 << n):
-            res = []
-            for j in range(n):
-                if i & (1 << j):
-                    res.append(nums[j])  
-            result.append(res[:])  
-        return result
+            for  j in range(len(nums)):
+                if 1 & (i >> j ):
+                    temp.append(nums[j])
+            ans.append(temp)
+        return ans
+                    
+        
+
 
           
         
