@@ -30,14 +30,11 @@ class Solution:
         
         ans = []
         for x,y in queries :
-            f = False
-            for i in mapp[y]:
-                if x == i:
-                    f = True
-                    ans.append(True)
-                    break
-            if not f:
-                ans.append(False)
+            if x in mapp[y]:
+                ans.append(True)
+                continue
+            ans.append(False)
+           
             
         return ans
 
