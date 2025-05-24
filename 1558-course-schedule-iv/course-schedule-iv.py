@@ -1,57 +1,66 @@
 class Solution:
     def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
         graph = defaultdict(list)
-        # indegree = defaultdict(int)
+        indegree = defaultdict(int)
 
         for x,y in prerequisites:
-            # indegree[y] += 1
+            indegree[y] += 1
             graph[x].append(y)
 
-        # qu = deque()
-        # mapp = defaultdict(int)
+        qu = deque()
+        mapp = defaultdict(set)
 
-        # for i in range(numCourses):
-        #     if indegree[i] == 0:
-        #         qu.append(i)
+        for i in range(numCourses):
+            if indegree[i] == 0:
+                qu.append(i)
 
-        # l = 1
-        # while qu:
-        #     leng = len(qu)
-        #     for  _ in range(leng):
-        #         node = qu.popleft()
-        #         for n in graph[node]:
-        #             indegree[n] -= 1
-        #             if indegree[n] == 0:
-        #                 mapp[n]= l
-        #                 qu.append(n)
-        #     l += 1
-        # print(mapp)
-        
-        # ans = []
-        # for x,y in queries :
-        #     if mapp[x] < mapp[y]:
-        #         ans.append(True)
-        #     else:
-        #         ans.append(False)
-        # return ans
-
-        def dfs(node, org):
-            if node == org:
-                return True
-
-            visited.add(node)
-
+      
+        while qu:
+            leng = len(qu)         
+            node = qu.popleft()
             for n in graph[node]:
-                if n not in visited:
-                    val = dfs(n, org)
-                    if val:
-                        return True
-            return False
-        ans = []        
-        for x,y in queries :
+                mapp[n].add(node)
+                for pre in mapp[node]:
+                    mapp[n].add(pre)
+                indegree[n] -= 1
+                if indegree[n] == 0:
+                    qu.append(n)
+       
         
-            visited  = set()
-            ans.append(dfs(x,y))
+        
+        ans = []
+        for x,y in queries :
+            f = False
+            for i in mapp[y]:
+                if x == i:
+                    f = True
+                    ans.append(True)
+                    break
+            if not f:
+                ans.append(False)
+            
+        return ans
+
+
+        #dfs solution
+
+        # def dfs(node, org):
+        #     if node == org:
+        #         return True
+
+        #     visited.add(node)
+
+        #     for n in graph[node]:
+        #         if n not in visited:
+        #             val = dfs(n, org)
+        #             if val:
+        #                 return True
+        #     return False
+        # ans = []        
+        # for x,y in queries :
+        
+        #     visited  = set()
+        #     ans.append(dfs(x,y))
 
         return ans
 
