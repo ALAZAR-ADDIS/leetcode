@@ -4,7 +4,7 @@ class Solution:
         ans = 0
         dis = 0
 
-        for i in  bine:
+        for i in    bine:
             
             if i == "1":
                 ans = max(ans , dis)
