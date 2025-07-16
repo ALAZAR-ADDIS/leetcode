@@ -19,6 +19,11 @@ class Solution:
             if i != nums[i]:
                 return i 
         return len(nums)
-
+        nums.sort()
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                return i
+        
+        return len(nums)
         
         
