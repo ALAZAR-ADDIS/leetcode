@@ -7,20 +7,21 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
 
-        def solve(path,node,root):
-            if not node:
-                if path and sum(path) == targetSum  and not( root.left or root.right) :
-
-                    ans.append(path[::])
+        def solve(path,node):
+            if not node:              
                 return 
+
             
             path.append(node.val)
-            solve(path,node.left,node)
-            if node.right:
-                 solve(path, node.right,node)
+            
+            if path and   sum(path) == targetSum  and not (node.left or node.right) :
+                    ans.append(path[::])
+            
+            solve(path,node.left)
+            solve(path, node.right)
             path.pop()
         
         ans = []
-        solve([],root,None)
+        solve([],root)
         return ans 
         
