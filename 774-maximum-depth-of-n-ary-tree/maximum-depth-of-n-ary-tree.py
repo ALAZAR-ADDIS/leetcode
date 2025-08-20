@@ -10,9 +10,7 @@ class Solution:
     def maxDepth(self, root: 'Node') -> int:
 
         def solve(root):
-            print(root)
-            if not root:
-                return 0
+           
             
             maxx = 0
             
@@ -22,6 +20,6 @@ class Solution:
         
             return maxx + 1
 
-        return solve(root)
+        return solve(root) if root else 0
 
         
