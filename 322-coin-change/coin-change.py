@@ -9,10 +9,9 @@ class Solution:
             if c == 0:
                 return 0
 
-            if i == 0:
-                if c % coins[i]:
-                    return float("inf")
-                return c // coins[i]
+            if i < 0:
+                return float("inf")
+                
 
             times = 0
             minn =  dp(i - 1, c)
