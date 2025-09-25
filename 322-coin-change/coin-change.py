@@ -10,18 +10,17 @@ class Solution:
                 return 0
 
             if i == 0:
-                if  c % coins[i]: 
+                if c % coins[i]:
                     return float("inf")
                 return c // coins[i]
 
             times = 0
             minn =  dp(i - 1, c)
-           
-            
             if c >= coins[i]:
                
-                val  = dp(i,c - coins[i])
-                minn = min(minn, val + 1)
+                val  = dp(i ,c - coins[i])
+                
+                minn = min(minn, val  + 1)
                
             memo[state] = minn
 
