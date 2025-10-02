@@ -5,7 +5,10 @@ class Solution:
             if total == 0:
                 return True
 
-            if n < 0 or total < 0:
+            if n == 0 :
+                return nums[0] == total
+
+            if total < 0:
                 return False
 
             state = (n, total)
