@@ -3,9 +3,7 @@ class Solution:
       
 
         def dp(i,prev,k):
-            if i == len(stones) - 1 :
-                # print(i,prev,k)
-                             
+            if i == len(stones) - 1 :                             
                 return stones[prev] + k == stones[i]
             
             pos = (i,prev, k)
@@ -14,7 +12,6 @@ class Solution:
 
             state = False
             if stones[prev] + k == stones[i]:
-                print(i,prev,k,"done")
                 if k - 1 > 0:
                     state = state or dp(i + 1, i, k - 1)
                 state = state or dp(i + 1,i,k + 1) or dp(i + 1,i,k ) 
