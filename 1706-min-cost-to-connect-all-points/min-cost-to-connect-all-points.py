@@ -14,6 +14,7 @@ class unionFind:
 
         if par_x != par_y:
             self.parent[par_x] = par_y
+        return par_x == par_y
 
     def connected(self, x,y):
         return self.find(x) == self.find(y)
@@ -32,12 +33,11 @@ class Solution:
         n = 0
         while  n < len(points) - 1:
             w,n1,n2 = heappop(heap)
-            if uni.connected(n1,n2):
+            if uni.union(n1,n2):
                 continue
             
-            print(n1,n2,w)
-            print(uni.parent[n1], uni.parent[n2],"added")
-            uni.union(n1,n2)
+           
+            
             n += 1
             ans += w
       
