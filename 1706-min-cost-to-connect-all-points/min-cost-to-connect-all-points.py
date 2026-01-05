@@ -1,29 +1,46 @@
+class unionFind:
+    def __init__(self,size):
+        self.parent = {i:i for i in range(size)}
+
+    def find(self,x):
+        if x == self.parent[x]:
+            return x
+        self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    def union(self,x,y):
+        par_x = self.find(x)
+        par_y = self.find(y)
+
+        if par_x != par_y:
+            self.parent[par_x] = par_y
+
+    def connected(self, x,y):
+        return self.find(x) == self.find(y)
+
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        mapp = defaultdict(list)
-
-        for i in range(len(points)):
-            x1,y1 = points[i]
-            for j in range(i + 1,len(points)):
-                x2,y2 = points[j]
-                dist = abs(x1-x2) + abs(y1 - y2)
-                mapp[i].append([dist,j])
-                mapp[j].append([dist,i])
-        
-        minH=[[0,0]]
-        visited = set()
-        cost = 0
-        while len(visited) < len(points):
-            dist,i = heapq.heappop(minH)
-
-            if i in visited:continue
-            cost += dist
-            visited.add(i)
-
-            for d,j in mapp[i]:
-                if j not in visited:
-                    heapq.heappush(minH,[d,j])
-        return cost
-                    
+        uni = unionFind(len(points))
+        heap = []
+        for index,valu in enumerate(points):
+            for index2,valu2 in enumerate(points):
+                if index2 > index:
+                    hyp = abs(valu[0] - valu2[0])  + abs(valu[1] - valu2[1])
+                    heappush(heap,(hyp,index,index2))
+       
+        ans = 0
+        n = 0
+        while  n < len(points) - 1:
+            w,n1,n2 = heappop(heap)
+            if uni.connected(n1,n2):
+                continue
+            
+            print(n1,n2,w)
+            print(uni.parent[n1], uni.parent[n2],"added")
+            uni.union(n1,n2)
+            n += 1
+            ans += w
+      
+        return ans
 
         
